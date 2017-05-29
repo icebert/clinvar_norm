@@ -24,6 +24,8 @@ with sqlite3.connect(db, isolation_level=None) as conn:
                     elif error == 'ErrorValidation':
                         if 'reference sequence' in reason:
                             error = 'wrong reference'
+                        elif 'out of the bound' in reason:
+                            error = 'coordinate out of bounds'
                         else:
                             error = 'discordant del/ins length'
                     else:
